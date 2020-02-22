@@ -236,6 +236,9 @@ void draw_bbox(image a, box bbox, int w, float r, float g, float b)
     int top   = (bbox.y-bbox.h/2)*a.h;
     int bot   = (bbox.y+bbox.h/2)*a.h;
 
+    if(left < 0) left = 0; if(right > im.w-1) right = im.w-1; if(top < 0) top = 0; if(bot > im.h-1) bot = im.h-1;
+    **printf("Bounding Box: Left=%d, Top=%d, Right=%d, Bottom=%d\n", left, top, right, bot);**
+    
     int i;
     for(i = 0; i < w; ++i){
         draw_box(a, left+i, top+i, right-i, bot-i, r, g, b);
